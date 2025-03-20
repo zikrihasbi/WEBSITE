@@ -1,5 +1,14 @@
 <?php
-include "koneksi.php"
+include "koneksi.php";
+$servername = "localhost";
+$database = "4ami" ;
+$password = "";
+
+$query = "SELECT * FROM mahasiswa";
+$data = ambildata($query);
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -11,6 +20,31 @@ include "koneksi.php"
 </head>
 <body>
     <h1>DATA PRODI</h1>
+    <br>
+    <table border="1" cellspacing="0" cellpadding= "5">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>nama prodi</td>
+                <td>kaprodi</td>
+                <td>jurusan</td>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        <?php foreach($data as $d) : ?>
+
+            <tr>
+                <td><?php echo $d["id"] ?></td>
+                <td><?php echo $d["nama"] ?></td>
+                <td></td><?php echo $d["kaprodi"] ?></td>
+                <td><?php echo $d["jurusan"] ?></td>
+            </tr>
+            
+            <?php endforeach; ?>
+        </tbody>
+        </table>
 
 </body>
 </html>
