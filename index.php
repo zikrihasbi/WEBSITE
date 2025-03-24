@@ -1,17 +1,10 @@
 <?php
+include "koneksi.php";
 $servername = "localhost";
 $database = "4ami";
-$username = "root";
 $password = "";
-
-$conn = mysqli_connect($servername, $username, $password, $database);
-
 $query = "SELECT * FROM mahasiswa";
-$hasil =  mysqli_query($conn, $query);
-
-$data = mysqli_fetch_assoc($hasil);
-
-//mysqli_connect("localhost", "zikrihii", "12345", "2025_web");
+$data =ambildata($query);
 
 ?>
 
@@ -25,6 +18,7 @@ $data = mysqli_fetch_assoc($hasil);
 <body>
     <h1>DATA MAHASISWA</h1>
     <br>
+    <a href="tambahanmahasiswa.php">tambah data</a>
     <table border ="1" cellspacing="0" cellspacing="5">
         <thead>
             <tr>
@@ -32,6 +26,7 @@ $data = mysqli_fetch_assoc($hasil);
             <th>nim</th>
             <th>nama</th>
             <th>tanggal_lahir</th>
+            <th>email</th>
             <th>telp</th>
             </tr>
         <thead>
@@ -45,9 +40,11 @@ $data = mysqli_fetch_assoc($hasil);
                 <td><?php echo $d["nim"]; ?></td>
                 <td><?php echo $d["nama"]; ?></td>
                 <td><?php echo $d["tanggal_lahir"]; ?></td>
+                <td><?php echo $d["email"]; ?></td>
                 <td><?php echo $d["telp"]; ?></td>
             </tr>
         <?php endforeach; ?>
+
         </tbody>
         </table>
 </body>

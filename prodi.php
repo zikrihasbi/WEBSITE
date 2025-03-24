@@ -4,7 +4,7 @@ $servername = "localhost";
 $database = "4ami" ;
 $password = "";
 
-$query = "SELECT * FROM mahasiswa";
+$query = "SELECT * FROM prodi";
 $data = ambildata($query);
 
 
@@ -38,7 +38,7 @@ $data = ambildata($query);
             <tr>
                 <td><?php echo $d["id"] ?></td>
                 <td><?php echo $d["nama"] ?></td>
-                <td></td><?php echo $d["kaprodi"] ?></td>
+                <td><?php echo $d["kaprodi"] ?></td>
                 <td><?php echo $d["jurusan"] ?></td>
             </tr>
             
