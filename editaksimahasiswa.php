@@ -8,9 +8,13 @@ $email = $_POST["email"];
 $telp = $_POST["telp"];
 $id_prodi = $_POST["id_prodi"]; 
 
-$query = "INSERT INTO mahasiswa (nim, nama, tanggal_lahir, email, telp, id_prodi)
-VALUES ('$nim','$nama','$tanggal_lahir','$email','$telp','$id_prodi')";
-
+$query = "UPDATE mahasiswa SET 
+            nama='$nama', 
+            tanggal_lahir='$tanggal_lahir', 
+            email='$email', 
+            telp='$telp', 
+            id_prodi='$id_prodi'
+          WHERE nim='$nim'";
 
 mysqli_query($conn, $query);
 

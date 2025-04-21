@@ -1,9 +1,10 @@
+
 <?php
 include "koneksi.php";
-$servername = "localhost";
-$database = "4ami";
-$password = "";
-$query = "SELECT * FROM mahasiswa";
+
+$query = "SELECT mahasiswa.*, prodi.nama AS NamaProdi
+        FROM mahasiswa
+        LEFT JOIN prodi ON mahasiswa.id_prodi = prodi.ID";
 $data =ambildata($query);
 
 ?>
@@ -26,22 +27,26 @@ $data =ambildata($query);
             <th>nim</th>
             <th>nama</th>
             <th>tanggal_lahir</th>
-            <th>email</th>
             <th>telp</th>
-            </tr>
+            <th>email</th>
+            <th>nama_prodi</th>            
+            <th>Aksi</th>            
         <thead>
     <tbody>
         <?php
         $i = 1;
-        foreach($data as $d) : 
-        ?>
+        foreach($data as $d) : ?>
             <tr>        
                 <td><?php echo $i++; ?></td>
                 <td><?php echo $d["nim"]; ?></td>
                 <td><?php echo $d["nama"]; ?></td>
                 <td><?php echo $d["tanggal_lahir"]; ?></td>
-                <td><?php echo $d["email"]; ?></td>
                 <td><?php echo $d["telp"]; ?></td>
+                <td><?php echo $d["email"]; ?></td>
+                <td><?php echo $d["NamaProdi"]; ?></td>
+                <td><a href="deletemahasiswa.php?nim=<?= $d['nim'] ?>"
+                onclick="return confirm('yakin ingin hapus?')">Delete</a>
+                <a href="editmahasiswa.php?nim=<?= $d['nim'] ?>">Edit</a></
             </tr>
         <?php endforeach; ?>
 

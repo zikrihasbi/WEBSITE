@@ -1,3 +1,9 @@
+<?php
+include "koneksi.php";
+
+$query = "SELECT * FROM prodi";
+$data = ambildata($query);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,16 +37,18 @@
             <td><input type="text" name="telp"></td>
         </tr>
         <tr>
-            <td>prodi</td>
-        <td>
-        <select name="id">
-            <option value="1">Manajemen Informatika</option>
-            <option value="2">Administrasi Bisnis</buttom>
-        </select>
-        </tr>
+    <td>prodi</td>
+    <td>
+    <select name="id_prodi" required>
+    <?php foreach($data as $d): ?>
+        <option value="<?= $d['ID']; ?>"><?= $d['nama']; ?></option>
+    <?php endforeach; ?>
+</select>
+    </td>
+</tr>
     </table>
     <a href="index.php">kembali</a>
-    <input type="submit"></button>
+    <input type="submit" value="simpan">
     </form>            
 </body>
 </html>

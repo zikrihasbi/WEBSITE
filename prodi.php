@@ -24,7 +24,7 @@ $data = ambildata($query);
     <table border="1" cellspacing="0" cellpadding= "5">
         <thead>
             <tr>
-                <td>id</td>
+                <td>ID</td>
                 <td>nama prodi</td>
                 <td>kaprodi</td>
                 <td>jurusan</td>
@@ -36,7 +36,7 @@ $data = ambildata($query);
         <?php foreach($data as $d) : ?>
 
             <tr>
-                <td><?php echo $d["id"] ?></td>
+                <td><?php echo $d["ID"] ?></td>
                 <td><?php echo $d["nama"] ?></td>
                 <td><?php echo $d["kaprodi"] ?></td>
                 <td><?php echo $d["jurusan"] ?></td>
