@@ -13,27 +13,33 @@ $query = "SELECT mahasiswa.*, prodi.nama AS NamaProdi
         LEFT JOIN prodi ON mahasiswa.id_prodi = prodi.ID";
 $data =ambildata($query);
 
-  
-include  "templete/header.php";
-include "templete/Sidebar.php";
 ?>
 
-                  <div class="card-body">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                        <th>no</th>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPADU POLIBAN</title>
+</head>
+<body>
+    <h1>DATA MAHASISWA</h1>
+    <br>
+    <a href="tambahanmahasiswa.php">tambah data</a>
+    <table border ="1" cellspacing="0" cellspacing="5">
+        <thead>
+            <tr>
+            <th>no</th>
             <th>nim</th>
             <th>nama</th>
             <th>tanggal_lahir</th>
             <th>telp</th>
             <th>email</th>
             <th>nama_prodi</th>            
-            <th>Aksi</th> 
-
-                        </tr>
-                      </tbody>
-                      <?php
+            <th>Aksi</th>            
+        <thead>
+    <tbody>
+        <?php
         $i = 1;
         foreach($data as $d) : ?>
             <tr>        
@@ -45,16 +51,13 @@ include "templete/Sidebar.php";
                 <td><?php echo $d["email"]; ?></td>
                 <td><?php echo $d["NamaProdi"]; ?></td>
                 <td><a href="deletemahasiswa.php?nim=<?= $d['nim'] ?>"
-                onclick="return confirm('yakin ingin hapus?')"class="btn btn-danger">Delete</a>
-                <a href="editmahasiswa.php?nim=<?= $d['nim'] ?>" class="btn btn-warning">Edit</a></
+                onclick="return confirm('yakin ingin hapus?')">Delete</a>
+                <a href="editmahasiswa.php?nim=<?= $d['nim'] ?>">Edit</a></
             </tr>
         <?php endforeach; ?>
-                    </table>
-                  </div>
-                  
 
+        </tbody>
+        </table>
+    <a href="logout.php">Keluar</a>
 </body>
 </html>
-<?php
-include "templete/footer.php";
-?>
